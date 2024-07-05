@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="pane_home" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller">
+   <children>
+      <VBox layoutY="147.0" prefHeight="156.0" prefWidth="400.0" style="-fx-border-color: grey;">
+         <children>
+            <ImageView fitHeight="169.0" fitWidth="399.0" pickOnBounds="true">
+               <image>
+                  <Image url="@images.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+      <VBox layoutY="74.0" prefHeight="69.0" prefWidth="400.0" style="-fx-border-color: grey; -fx-background-color: purple;" AnchorPane.bottomAnchor="257.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="74.0">
+         <children>
+            <Label alignment="CENTER" text="Library Management System" textAlignment="CENTER" textFill="WHITE" underline="true">
+               <VBox.margin>
+                  <Insets left="70.0" top="19.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <Label layoutX="39.0" layoutY="335.0" text="Status:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <VBox layoutY="26.0" prefHeight="44.0" prefWidth="400.0" style="-fx-background-color: orange;">
+         <children>
+            <Label text="Fast University Islamabad" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="75.0" top="5.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+      <Label layoutY="24.0" prefHeight="400.0" prefWidth="8.0" style="-fx-background-color: purple;" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="392.0" AnchorPane.topAnchor="0.0" />
+      <Label layoutX="393.0" prefHeight="400.0" prefWidth="8.0" style="-fx-background-color: purple;" textFill="WHITE" />
+      <MenuBar layoutY="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem fx:id="New" mnemonicParsing="false" onAction="#HandlingNew" text="New" />
+                  <MenuItem fx:id="Open" mnemonicParsing="false" onAction="#HandlingOpen" text="Open" />
+                  <MenuItem fx:id="Save" mnemonicParsing="false" onAction="#HandlingSave" text="Save" />
+                  <MenuItem fx:id="Save_As" mnemonicParsing="false" onAction="#HandlingSave_As" text="Save As" />
+                  <MenuItem fx:id="Exit" mnemonicParsing="false" onAction="#HandlingExit" text="Exit" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+               <items>
+                  <MenuItem fx:id="AddBook" mnemonicParsing="false" onAction="#AddingBook" text="Add Book" />
+                  <MenuItem fx:id="EditBook" mnemonicParsing="false" onAction="#EditingBook" text="Edit Book" />
+                  <MenuItem fx:id="DeleteBook" mnemonicParsing="false" onAction="#DeletingBook" text="Delete Book" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="View">
+               <items>
+                  <MenuItem fx:id="View_Book" mnemonicParsing="false" onAction="#HandlingView_Book" text="View All Books" />
+                  <MenuItem fx:id="Search_Book" mnemonicParsing="false" onAction="#HandleSearch_Book" text="Search Books" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <Label layoutY="393.0" prefHeight="10.0" prefWidth="400.0" style="-fx-background-color: purple;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <TextField fx:id="Status_Message_Home" editable="false" layoutX="106.0" layoutY="329.0" prefHeight="41.0" prefWidth="240.0" style="-fx-border-color: orange; -fx-border-width: 3;" />
+   </children>
+</AnchorPane>

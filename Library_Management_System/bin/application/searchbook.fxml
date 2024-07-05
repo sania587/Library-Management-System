@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="pane_addingbook" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="467.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller">
+   <children>
+      <TableView fx:id="TableView_Search" layoutX="8.0" layoutY="253.0" prefHeight="136.0" prefWidth="384.0" style="-fx-background-color: orange;" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0">
+         <columns>
+            <TableColumn fx:id="Title1" prefWidth="73.0" text="Title" />
+            <TableColumn fx:id="Author1" prefWidth="76.0" text="Author" />
+            <TableColumn fx:id="ISBN1" prefWidth="67.0" text="ISBN" />
+            <TableColumn fx:id="Availability1" prefWidth="101.0" text="Availability" />
+         </columns>
+      </TableView>
+      <HBox alignment="CENTER" layoutY="89.0" prefHeight="40.0" prefWidth="413.0" style="-fx-border-color: grey;" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Label prefHeight="22.0" prefWidth="150.0" text="Search Books" textAlignment="CENTER" textFill="#048eff">
+               <font>
+                  <Font name="Arial Bold" size="19.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <VBox layoutX="-2.0" layoutY="34.0" prefHeight="44.0" prefWidth="400.0" style="-fx-background-color: orange;">
+         <children>
+            <Label text="Fast University Islamabad" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="75.0" top="5.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+      <Label layoutY="-4.0" prefHeight="400.0" prefWidth="8.0" style="-fx-background-color: purple;" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="392.0" AnchorPane.topAnchor="0.0" />
+      <Label layoutX="389.0" layoutY="-5.0" prefHeight="400.0" prefWidth="8.0" style="-fx-background-color: purple;" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Label layoutX="-2.0" layoutY="365.0" prefHeight="10.0" prefWidth="400.0" style="-fx-background-color: purple;" AnchorPane.bottomAnchor="0.0" />
+      <Label layoutX="8.0" layoutY="375.0" prefHeight="10.0" prefWidth="400.0" style="-fx-background-color: purple;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Label layoutX="47.0" layoutY="403.0" text="Status:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="Status_Message_Search" editable="false" layoutX="111.0" layoutY="395.0" prefHeight="41.0" prefWidth="240.0" style="-fx-border-color: orange; -fx-border-width: 3;" />
+      <HBox layoutX="-11.0" layoutY="196.0" prefHeight="41.0" prefWidth="413.0">
+         <children>
+            <Label text="Enter:" textAlignment="CENTER">
+               <HBox.margin>
+                  <Insets left="50.0" top="4.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="title_Searchbook" disable="true" prefHeight="25.0" prefWidth="240.0">
+               <HBox.margin>
+                  <Insets left="40.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+      </HBox>
+      <Button fx:id="Ok_SearchButton" layoutX="301.0" layoutY="224.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Checking_Search" prefHeight="25.0" prefWidth="70.0" style="-fx-border-color: green;" text="Ok" textFill="#1f7205">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+      </Button>
+      <ComboBox fx:id="Box" disable="true" layoutX="191.0" layoutY="143.0" prefWidth="150.0" />
+      <Label layoutX="119.0" layoutY="147.0" text="Type:" textAlignment="CENTER" />
+      <Button fx:id="Enable_combobox" layoutX="36.0" layoutY="143.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Enabling_combobox" prefHeight="25.0" prefWidth="70.0" style="-fx-border-color: green;" text="Enable" textFill="#1f7205">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
