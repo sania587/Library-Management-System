@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #5850EC;
+            --primary-dark: #4338CA;
+            --bg: #F9FAFB;
+            --sidebar: #FFFFFF;
+            --text-main: #111827;
+            --text-muted: #6B7280;
+            --accent: #10B981;
+            --border: #E5E7EB;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background-color: var(--sidebar);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            position: fixed;
+            height: 100vh;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            border-radius: 12px;
+            margin-bottom: 8px;
+            transition: all 0.2s;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background-color: rgba(88, 80, 236, 0.05);
+            color: var(--primary);
+        }
+
+        .nav-item.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 3rem;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        /* Book Table */
+        .card {
+            background: white;
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            padding: 2rem;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: left;
+            padding: 12px 16px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 1px solid var(--border);
+        }
+
+        td {
+            padding: 16px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.95rem;
+        }
+
+        .book-title {
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .badge {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .badge-available { background: rgba(16, 185, 129, 0.1); color: var(--accent); }
+        .badge-borrowed { background: rgba(245, 158, 11, 0.1); color: #F59E0B; }
+
+        @media (max-width: 1024px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar { display: none; }
+            .main-content { margin-left: 0; padding: 1.5rem; }
+            .stats-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<aside class="sidebar">
+    <div class="logo">
+        <span>📖</span> LibraryMS
+    </div>
+    <nav>
+        <a href="#" class="nav-item active">Dashboard</a>
+        <a href="#" class="nav-item">Books Catalog</a>
+        <a href="#" class="nav-item">Members</a>
+        <a href="#" class="nav-item">Borrowings</a>
+        <a href="#" class="nav-item">Reports</a>
+        <a href="#" class="nav-item">Settings</a>
+    </nav>
+</aside>
+
+<main class="main-content">
+    <header>
+        <div>
+            <h1>Library Dashboard</h1>
+            <p style="color: var(--text-muted)">Welcome back, Administrator</p>
+        </div>
+        <div class="user-profile">
+            <span style="font-weight: 700">Admin</span>
+            <div class="avatar"></div>
+        </div>
+    </header>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <span class="stat-label">Total Books</span>
+            <span class="stat-value">1,284</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-label">Active Members</span>
+            <span class="stat-value">456</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-label">Borrowed Today</span>
+            <span class="stat-value">24</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-label">Overdue Items</span>
+            <span class="stat-value" style="color: #EF4444">12</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h2>Recent Books</h2>
+            <button class="btn btn-primary" onclick="alert('This is a web demo of the JavaFX UI.')">+ Add New Book</button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title & Author</th>
+                    <th>ISBN</th>
+                    <th>Category</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><div class="book-title">The Great Gatsby</div><span style="font-size: 0.8rem; color: var(--text-muted)">F. Scott Fitzgerald</span></td>
+                    <td>978-0743273565</td>
+                    <td>Classic</td>
+                    <td><span class="badge badge-available">Available</span></td>
+                </tr>
+                <tr>
+                    <td><div class="book-title">To Kill a Mockingbird</div><span style="font-size: 0.8rem; color: var(--text-muted)">Harper Lee</span></td>
+                    <td>978-0061120084</td>
+                    <td>Fiction</td>
+                    <td><span class="badge badge-available">Available</span></td>
+                </tr>
+                <tr>
+                    <td><div class="book-title">1984</div><span style="font-size: 0.8rem; color: var(--text-muted)">George Orwell</span></td>
+                    <td>978-0451524935</td>
+                    <td>Dystopian</td>
+                    <td><span class="badge badge-borrowed">Borrowed</span></td>
+                </tr>
+                <tr>
+                    <td><div class="book-title">The Hobbit</div><span style="font-size: 0.8rem; color: var(--text-muted)">J.R.R. Tolkien</span></td>
+                    <td>978-0547928227</td>
+                    <td>Fantasy</td>
+                    <td><span class="badge badge-available">Available</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div style="margin-top: 3rem; text-align: center; color: var(--text-muted); font-size: 0.85rem;">
+        This is a web-based landing page for the <strong>Library Management System (JavaFX)</strong> desktop application.
+    </div>
+</main>
+
+</body>
+</html>
